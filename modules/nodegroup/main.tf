@@ -34,6 +34,7 @@ resource "aws_launch_template" "launch_template" {
 
  }
 
+
 resource "aws_autoscaling_group" "auto_scaling_group" {
   desired_capacity    = var.desired_capacity
   max_size            = var.max_size

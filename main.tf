@@ -44,6 +44,13 @@ module "sg" {
     protocol    = "tcp"
     cidr_blocks = [var.vpc_cidr]
   }
+  allow_all_ingress = {
+      description = "Allow all ingress traffic"
+      from_port   = 0
+      to_port     = 0
+      protocol    = "-1"
+      cidr_blocks = ["0.0.0.0/0"]
+    }
     
   }
 
@@ -83,7 +90,7 @@ resource "kubernetes_config_map" "aws_auth" {
     name      = "aws-auth"
     namespace = "kube-system"
   }
-
+  
   data = {
     mapRoles = <<-EOT
       - rolearn: ${module.IAM.managed_node_role_arn}
