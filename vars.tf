@@ -92,7 +92,6 @@ variable "eks_cluster_name" {
      default     = "awseks"
    }
 
-variable "aws_account_id" {
-     description = "AWS Account id"
-     default     = "111007121372"
-   }
+variable "key_name" {
+  default="awsekskey"
+}
