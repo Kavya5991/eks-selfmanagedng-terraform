@@ -87,11 +87,12 @@ variable "instance_type" {
   default     = "t2.medium"
 }
 
-variable "eks_cluster_name" {
+/*variable "eks_cluster_name" {
      description = "Name for the eks cluster"
      default     = "awseks"
-   }
+   }*/
 
 variable "key_name" {
+  type= string
   default="awsekskey"
 }
