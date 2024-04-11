@@ -1,12 +1,3 @@
-variable "availability_zones" {
-  type    = list(string)
-  default = ["us-east-1a", "us-east-1b", "us-east-1c"]
-}
-
-variable "aws_region" {
-  type    = string
-  default = "us-east-1"
-}
 
 variable "vpc_cidr" {
   description = "VPC CIDR range"
@@ -25,7 +16,7 @@ variable "allowed_cidr" {
   type        = string
   default     = "0.0.0.0/0"
 }
-variable "ingress_rules" {
+/*variable "ingress_rules" {
   description = "A map of ingress rules for the security group"
   type = map(object({
     description = string
@@ -59,7 +50,7 @@ variable "ingress_rules" {
     }
     
   }
-}
+}*/
 
 
 variable "ami" {
@@ -95,7 +86,13 @@ variable "instance_type" {
   type        = string
   default     = "t2.medium"
 }
-variable "key_name" {
-  description = "Name for the AWS key pair"
-  default     = "awsekskey"
-}
+
+variable "eks_cluster_name" {
+     description = "Name for the eks cluster"
+     default     = "awseks"
+   }
+
+variable "aws_account_id" {
+     description = "AWS Account id"
+     default     = "111007121372"
+   }

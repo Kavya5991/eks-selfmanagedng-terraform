@@ -1,7 +1,7 @@
 /*managed node group role*/
 resource "aws_iam_role" "eks_self_managed_node_group" {
   name               = "${var.node_group_name}-role"
-  assume_role_policy = file("modules/IAM/iam_ec2_assume_role_policy.json")
+  assume_role_policy = file("${path.module}/iam_ec2_assume_role_policy.json")
 }
 
 resource "aws_iam_role_policy_attachment" "amazon_eks_worker_node_policy" {
@@ -27,7 +27,7 @@ resource "aws_iam_instance_profile" "eks_self_managed_node_group" {
 /*cluster role */
 resource "aws_iam_role" "eks_cluster_role" {
   name               = "${var.cluster_name}-role"
-  assume_role_policy = file("modules/IAM/iam_eks_assume_role_policy.json")
+  assume_role_policy = file("${path.module}/iam_eks_assume_role_policy.json")
 }
 
 resource "aws_iam_role_policy_attachment" "example-AmazonEKSClusterPolicy" {
