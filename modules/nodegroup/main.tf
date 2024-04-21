@@ -24,17 +24,17 @@ resource "aws_launch_template" "launch_template" {
    iam_instance_profile {
     arn = var.eks_self_managed_node_group_instance_profile_arn
   }
+   user_data = base64encode(templatefile("${path.module}/user_data.sh", {
+    cluster_name = var.cluster_name
+    node_labels  = var.node_labels
+  }))
   tag_specifications {
     resource_type = var.resource_type
 
-    tags = {
-    Name = var.launch_template_ec2_name
-    }
+
   }
 
  }
-
-
 resource "aws_autoscaling_group" "auto_scaling_group" {
   desired_capacity    = var.desired_capacity
   max_size            = var.max_size

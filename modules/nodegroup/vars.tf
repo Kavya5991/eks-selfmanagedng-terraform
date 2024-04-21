@@ -45,6 +45,12 @@ variable "ami" {
   description = "The AMI ID for instances in ASG"
   default     = "ami-0d7a109bf30624c99"
 }
+
+variable "tags" {
+  type        = map(any)
+  description = "(Optional) Tags to apply to all tag-able resources."
+  default     = {}
+}
 variable "min_size" {
   description = "The minimum number of EC2 Instances in the ASG"
   type        = number
@@ -73,6 +79,16 @@ variable "public_subnet_ids" {
   description = "The list of public subnet IDs to launch the EC2 instances in ASG"
 }
 
+variable "cluster_name"{
+  type=string
+  description="Enter name of cluster"
+}
+
+variable "node_labels" {
+  type        = map(any)
+  description = "(Optional) Kubernetes labels to apply to all nodes in the node group."
+  default     = {}
+}
 variable "eks_self_managed_node_group_instance_profile_arn" {
   description = "ARN of the IAM role for the self-managed node group in Amazon EKS"
 }

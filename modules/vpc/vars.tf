@@ -50,9 +50,15 @@ variable "public_subnet_name" {
 }
 
 
+
 variable "public_route_table_name" {
   type    = string
   default = "awseks-public-route-table"
+}
+variable "counts" {
+  description = "Number of subnets to be created"
+  type        = number
+  default     = 2
 }
 
 

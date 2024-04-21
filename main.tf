@@ -81,6 +81,10 @@ module "nodegroup" {
   min_size              = var.min_size
   public_subnet_ids     = module.vpc.public_subnet_ids
   asg_security_group_id = [module.sg.sg_id]
+   node_labels = {
+    "kubernetes.io/cluster/${var.cluster_name}"= "owned" # (Optional) node-group name label
+  }
+  cluster_name = module.cluster.eks_cluster_name
   eks_self_managed_node_group_instance_profile_arn = module.IAM.managed_node_instance_profile
 
 }

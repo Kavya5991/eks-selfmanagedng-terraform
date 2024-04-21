@@ -51,13 +51,19 @@ variable "allowed_cidr" {
     
   }
 }*/
-
+variable "cluster_name"{
+  type=string
+  description="Enter name of cluster"
+  default="awseks"
+}
 
 variable "ami" {
   type        = string
   description = "The AMI ID for instances in ASG"
   default     = "ami-049924d678af7a43b"
 }
+
+
 variable "min_size" {
   description = "The minimum number of EC2 Instances in the ASG"
   type        = number
@@ -84,7 +90,7 @@ variable "launch_template_name" {
 variable "instance_type" {
   description = "The type of EC2 Instances to run"
   type        = string
-  default     = "t2.medium"
+  default     = "t2.large"
 }
 
 /*variable "eks_cluster_name" {
